@@ -391,6 +391,7 @@
                                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}" >
                                             <button type="submit" class="btn btn-outline-danger btn-sm px-3">Supprimer</button>
                                         </form>
+
                                         <form id="editForm" action="{{ path('app_rec_edit', {'id': reclamation.id}) }}" method="post">
                                             <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ reclamation.id) }}" >
                                             <button type="submit" class="btn btn-outline-info btn-sm px-4">Modifier</button>
