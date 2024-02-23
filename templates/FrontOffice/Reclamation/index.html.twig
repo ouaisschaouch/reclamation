@@ -1,0 +1,104 @@
+{% extends 'FrontOffice/base.html.twig' %}
+{% block title %}Contact{% endblock %}
+
+
+{% block body %}
+
+        {% block head %}
+            {% include 'FrontOffice/header.html.twig' %}
+     {% endblock %}
+<section id="contact" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Reclamer</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="info-box mb-4">
+                    <i class="bx bx-map"></i>
+                    <h3>Notre Adresse</h3>
+                    <p>Yuri's, Ariana, 2040</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                    <i class="bx bx-envelope"></i>
+                    <h3>contacter nous </h3>
+                    <p>yuris@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                    <i class="bx bx-phone-call"></i>
+                    <h3>Num</h3>
+                    <p>+216 51 156 720</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6 ">
+                <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+            </div>
+
+            <div class="col-lg-6">
+                {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom', }}) }}
+                        {{ form_errors(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom', }}) }}
+
+                    </div>
+                    <div class="col-md-6 form-group">
+                        {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prenom', }}) }}
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    {{ form_row(form.sujet, {'attr': {'class': 'form-control', 'placeholder': 'Sujet', }}) }}
+                </div>
+                <div class="form-group mt-3">
+                    {{ form_row(form.description, {'attr': {'class': 'form-control', 'placeholder': 'description', }}) }}
+                </div>
+                <div class="text-center">
+                    {{ form_row(form.img, {'label': 'Image'}) }}
+                </div>
+                <div class="text-center">
+                    {{ form_row(form.envoyer, {'label': 'Envoyer', 'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const successMessage = '{{ app.session.flashBag.get("successAddRec") | first }}';
+
+            if (successMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    title: successMessage,
+                    showConfirmButton: false,
+                    showCloseButton: true,  // Add this line to show the "Fermer" button
+                });
+            }
+        });
+
+    </script>
+{% block footer %}
+    {% include 'FrontOffice/footer.html.twig' %}
+{% endblock %}
+{% endblock %}

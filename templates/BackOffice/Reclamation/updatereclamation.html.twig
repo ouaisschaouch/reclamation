@@ -1,0 +1,79 @@
+{% extends 'FrontOffice/base.html.twig' %}
+{% block title %}Contact{% endblock %}
+
+
+{% block body %}
+
+    {% block head %}
+        {% include 'FrontOffice/header.html.twig' %}
+    {% endblock %}
+    <section id="contact" class="contact section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Modifier</h2>
+            </div>
+
+                <div class="section-bg">
+
+                <div class="col-lg-6" align="center">
+                    {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom', }}) }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prenom', }}) }}
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_row(form.sujet, {'attr': {'class': 'form-control', 'placeholder': 'Sujet', }}) }}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_row(form.description, {'attr': {'class': 'form-control', 'placeholder': 'description', }}) }}
+                    </div>
+                    <div class="text-center">
+                        {{ form_row(form.img, {'label': 'Image'}) }}
+                    </div>
+                    <div class="btn-group">
+                        <div class="text-center">
+                            {{ form_row(form.envoyer, {'label': 'modifier', 'attr': {'class': 'btn btn-outline-info btn-sm px-3'}}) }}
+
+                        </div>
+
+                        <div class="text-center" >
+                                <button type="submit" class="btn btn-outline-danger btn-sm px-3" href="{{ path('app_admin_reclamation') }}" >Annuler
+                                </button>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const successMessage = '{{ app.session.flashBag.get("successEditRec") | first }}';
+
+            if (successMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    title: successMessage,
+                    showConfirmButton: false,
+                    showCloseButton: true,  // Add this line to show the "Fermer" button
+                });
+            }
+        });
+
+    </script>
+    {% block footer %}
+        {% include 'FrontOffice/footer.html.twig' %}
+    {% endblock %}
+{% endblock %}

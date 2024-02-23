@@ -1,0 +1,32 @@
+{% extends 'FrontOffice/base.html.twig' %}
+{% block title %}Contact{% endblock %}
+
+
+{% block body %}
+
+    {% block head %}
+        {% include 'FrontOffice/header.html.twig' %}
+    {% endblock %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const successMessage = '{{ app.session.flashBag.get("successDeleteRec") | first }}';
+
+            if (successMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    title: successMessage,
+                    showConfirmButton: false,
+                    showCloseButton: true,  // Add this line to show the "Fermer" button
+                });
+            }
+        });
+
+    </script>
+    {% block footer %}
+        {% include 'FrontOffice/footer.html.twig' %}
+    {% endblock %}
+{% endblock %}
